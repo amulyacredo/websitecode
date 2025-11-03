@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CredO Convergence Animation</title>
+    <style>
+        :root {
+            --brand-color: #4f000b;
+            --brand-gradient: linear-gradient(135deg, #4f000b 0%, #a10000 100%);
+            --light-blue: #a8c8e1;
+            --light-green: #a8d8c0;
+            --white: #ffffff;
+            --orange: #ffc690;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .animation-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-panel {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+
+        .control-btn {
+            padding: 10px 20px;
+            background: var(--brand-gradient);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 0, 11, 0.4);
+        }
+
+        /* Block Styles */
+        .block {
+            position: absolute;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .block.primary {
+            background: var(--light-blue);
+            color: #2c3e50;
+        }
+
+        .block.secondary {
+            background: var(--light-green);
+            color: #2c3e50;
+        }
+
+        .block.tertiary {
+            background: var(--orange);
+            color: #8b4513;
+            border: 2px solid #d4a574;
+        }
+
+        /* Arrow Styles */
+        .arrow {
+            position: absolute;
+            transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 5;
+        }
+
+        .arrow-chevron {
+            width: 0;
+            height: 0;
+            position: relative;
+        }
+
+        /* Chevron patterns */
+        .chevron-up::before,
+        .chevron-up::after,
+        .chevron-down::before,
+        .chevron-down::after,
+        .chevron-left::before,
+        .chevron-left::after,
+        .chevron-right::before,
+        .chevron-right::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 4px;
+            background: var(--brand-color);
+            transform-origin: center;
+        }
+
+        .chevron-up::before { transform: rotate(45deg) translate(-5px, 5px); }
+        .chevron-up::after { transform: rotate(-45deg) translate(5px, 5px); }
+        
+        .chevron-down::before { transform: rotate(-45deg) translate(-5px, -5px); }
+        .chevron-down::after { transform: rotate(45deg) translate(5px, -5px); }
+        
+        .chevron-left::before { transform: rotate(45deg) translate(5px, 5px); }
+        .chevron-left::after { transform: rotate(-45deg) translate(5px, -5px); }
+        
+        .chevron-right::before { transform: rotate(-45deg) translate(-5px, 5px); }
+        .chevron-right::after { transform: rotate(45deg) translate(-5px, -5px); }
+
+        /* Multi-chevron arrows */
+        .multi-chevron {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .multi-chevron.horizontal {
+            flex-direction: row;
+        }
+
+        .multi-chevron.vertical {
+            flex-direction: column;
+        }
+
+        /* Center CredO Block */
+        .center-block {
+            position: absolute;
+            top: 48%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--brand-gradient);
+            color: white;
+            padding: 18px 35px;
+            border-radius: 8px;
+            font-size: 22px;
+            font-weight: 700;
+            box-shadow: 0 8px 30px rgba(79, 0, 11, 0.4);
+            z-index: 20;
+            transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .credo-logo {
+            max-width: 80px;
+            max-height: 35px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Concentric Square Positions */
+        
+        /* Outer Square (Layer 3) */
+        .homogenic-assurance { top: 5%; left: 35%; }
+        .controls-testing { top: 5%; right: 35%; }
+        .compliance-mandates { top: 45%; left: 5%; }
+        .control-assurance { top: 45%; right: 5%; }
+        .control-design { bottom: 5%; left: 50%; transform: translateX(-50%); }
+        
+        /* Middle Square (Layer 2) - Diagonal positioning around inner square */
+        .threat-modelling { top: 22%; left: 22%; }
+        .security-sdlc { top: 22%; right: 22%; }
+        .privacy-design { bottom: 22%; left: 22%; }
+        .security-design { bottom: 22%; right: 22%; }
+        
+        /* Inner Square (Layer 1) - Positioned around CredO */
+        /* Top row - above CredO, centered and spaced */
+        .vulnerability-assessment { top: 25%; left: 40%; }
+        .threat-intelligence { top: 25%; right: 40%; }
+        
+        /* Side blocks - left and right of CredO */
+        .event-detection { top: 45%; left: 25%; }
+        .incident-detection { top: 45%; right: 25%; }
+        
+        /* Bottom row - below CredO, centered and spaced */
+        .threat-management { bottom: 25%; left: 40%; }
+        .incident-response { bottom: 25%; right: 40%; }
+
+        /* Arrow Positions */
+        .arrow-top { top: 18%; left: 50%; transform: translateX(-50%); }
+        .arrow-top-left { top: 12%; left: 12%; }
+        .arrow-top-right { top: 12%; right: 12%; }
+        .arrow-left { top: 50%; left: 18%; transform: translateY(-50%); }
+        .arrow-right { top: 50%; right: 18%; transform: translateY(-50%); }
+        .arrow-bottom-left { bottom: 12%; left: 12%; }
+        .arrow-bottom-right { bottom: 12%; right: 12%; }
+        .arrow-bottom { bottom: 18%; left: 50%; transform: translateX(-50%); }
+
+        /* Layer Classes for Animation */
+        .layer-1 { z-index: 15; }
+        .layer-2 { z-index: 14; }
+        .layer-3 { z-index: 13; }
+
+        /* Animation States */
+        .block {
+            transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Animation approach: Use transform to move from current position to center */
+        .converged .layer-1 {
+            opacity: 0;
+            transition-delay: 0s;
+        }
+
+        /* Specific convergence transforms for each block based on their current position */
+        .converged .vulnerability-assessment {
+            transform: translate(10%, 90%) scale(0);
+        }
+
+        .converged .threat-intelligence {
+            transform: translate(-10%, 90%) scale(0);
+        }
+
+        .converged .event-detection {
+            transform: translate(100%, 5%) scale(0);
+        }
+
+        .converged .incident-detection {
+            transform: translate(-100%, 5%) scale(0);
+        }
+
+        .converged .threat-management {
+            transform: translate(10%, -90%) scale(0);
+        }
+
+        .converged .incident-response {
+            transform: translate(-10%, -90%) scale(0);
+        }
+
+        .converged .layer-2 {
+            opacity: 0;
+            transition-delay: 1.2s;
+        }
+
+        .converged .threat-modelling {
+            transform: translate(130%, 120%) scale(0);
+        }
+
+        .converged .security-sdlc {
+            transform: translate(-130%, 120%) scale(0);
+        }
+
+        .converged .privacy-design {
+            transform: translate(130%, -120%) scale(0);
+        }
+
+        .converged .security-design {
+            transform: translate(-130%, -120%) scale(0);
+        }
+
+        .converged .layer-3 {
+            opacity: 0;
+            transition-delay: 2.4s;
+        }
+
+        .converged .homogenic-assurance {
+            transform: translate(40%, 1200%) scale(0);
+        }
+
+        .converged .controls-testing {
+            transform: translate(-40%, 1200%) scale(0);
+        }
+
+        .converged .compliance-mandates {
+            transform: translate(900%, 8%) scale(0);
+        }
+
+        .converged .control-assurance {
+            transform: translate(-900%, 8%) scale(0);
+        }
+
+        .converged .control-design {
+            transform: translate(0%, -1200%) scale(0);
+        }
+
+        .converged .arrow {
+            opacity: 0;
+            transform: scale(0);
+            transition-delay: 0.5s;
+        }
+
+        .converged .center-block {
+            transform: translate(-50%, -50%) scale(1.2);
+            box-shadow: 0 15px 50px rgba(79, 0, 11, 0.6);
+            transition-delay: 3.6s;
+        }
+
+        /* Glow effect for final state */
+        @keyframes finalGlow {
+            0%, 100% {
+                box-shadow: 0 15px 50px rgba(79, 0, 11, 0.6);
+            }
+            50% {
+                box-shadow: 0 20px 60px rgba(79, 0, 11, 0.8);
+            }
+        }
+
+        .converged .center-block {
+            animation: finalGlow 2s ease-in-out infinite;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .block {
+                font-size: 12px;
+                padding: 10px 15px;
+                min-width: 100px;
+            }
+            
+            .center-block {
+                font-size: 18px;
+                padding: 15px 30px;
+            }
+
+            .credo-logo {
+                max-width: 70px;
+                max-height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="control-panel">
+        <button class="control-btn" onclick="startAnimation()">Start Animation</button>
+        <button class="control-btn" onclick="resetAnimation()">Reset</button>
+        <button class="control-btn" onclick="toggleSpeed()">Speed: <span id="speedText">Normal</span></button>
+    </div>
+
+    <div class="animation-container" id="animationContainer">
+        <!-- Center CredO Block -->
+        <div class="center-block" id="centerBlock">
+            <img src="Assets/logo2.PNG" alt="CREDO" class="credo-logo">
+        </div>
+
+        <!-- Layer 3 - Outer Square -->
+        <div class="block primary layer-3 homogenic-assurance">Homogenic<br>Assurance</div>
+        <div class="block primary layer-3 controls-testing">Controls<br>Testing</div>
+        <div class="block primary layer-3 compliance-mandates">Compliance<br>Mandates</div>
+        <div class="block primary layer-3 control-assurance">Control<br>Assurance</div>
+        <div class="block primary layer-3 control-design">Control Design</div>
+
+        <!-- Layer 2 - Middle Square (Diagonal corners) -->
+        <div class="block secondary layer-2 threat-modelling">Threat<br>Modelling</div>
+        <div class="block secondary layer-2 security-sdlc">Security In<br>SDLC</div>
+        <div class="block secondary layer-2 privacy-design">Privacy<br>Design</div>
+        <div class="block secondary layer-2 security-design">Security<br>Design</div>
+
+        <!-- Layer 1 - Inner Square around CredO -->
+        <div class="block tertiary layer-1 vulnerability-assessment">Vulnerability<br>Assessment</div>
+        <div class="block tertiary layer-1 threat-intelligence">Threat<br>Intelligence</div>
+        <div class="block tertiary layer-1 event-detection">Event<br>Detection</div>
+        <div class="block tertiary layer-1 incident-detection">Incident<br>Detection</div>
+        <div class="block tertiary layer-1 threat-management">Threat<br>Management</div>
+        <div class="block tertiary layer-1 incident-response">Incident<br>Response</div>
+
+        <!-- Arrows pointing toward center -->
+        <div class="arrow arrow-top">
+            <div class="multi-chevron vertical">
+                <div class="arrow-chevron chevron-down"></div>
+                <div class="arrow-chevron chevron-down"></div>
+                <div class="arrow-chevron chevron-down"></div>
+            </div>
+        </div>
+
+        <div class="arrow arrow-top-left">
+            <div class="multi-chevron diagonal" style="transform: rotate(45deg);">
+                <div class="arrow-chevron chevron-down"></div>
+                <div class="arrow-chevron chevron-down"></div>
+                <div class="arrow-chevron chevron-down"></div>
+            </div>
+        </div>
+
+        <div class="arrow arrow-top-right">
+            <div class="multi-chevron diagonal" style="transform: rotate(-45deg);">
+                <div class="arrow-chevron chevron-down"></div>
+                <div class="arrow-chevron chevron-down"></div>
+                <div class="arrow-chevron chevron-down"></div>
+            </div>
+        </div>
+
+        <div class="arrow arrow-left">
+            <div class="multi-chevron horizontal">
+                <div class="arrow-chevron chevron-right"></div>
+                <div class="arrow-chevron chevron-right"></div>
+                <div class="arrow-chevron chevron-right"></div>
+            </div>
+        </div>
+
+        <div class="arrow arrow-right">
+            <div class="multi-chevron horizontal">
+                <div class="arrow-chevron chevron-left"></div>
+                <div class="arrow-chevron chevron-left"></div>
+                <div class="arrow-chevron chevron-left"></div>
+            </div>
+        </div>
+
+        <div class="arrow arrow-bottom-left">
+            <div class="multi-chevron diagonal" style="transform: rotate(-45deg);">
+                <div class="arrow-chevron chevron-up"></div>
+                <div class="arrow-chevron chevron-up"></div>
+                <div class="arrow-chevron chevron-up"></div>
+            </div>
+        </div>
+
+        <div class="arrow arrow-bottom-right">
+            <div class="multi-chevron diagonal" style="transform: rotate(45deg);">
+                <div class="arrow-chevron chevron-up"></div>
+                <div class="arrow-chevron chevron-up"></div>
+                <div class="arrow-chevron chevron-up"></div>
+            </div>
+        </div>
+
+        <div class="arrow arrow-bottom">
+            <div class="multi-chevron vertical">
+                <div class="arrow-chevron chevron-up"></div>
+                <div class="arrow-chevron chevron-up"></div>
+                <div class="arrow-chevron chevron-up"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let animationSpeed = 1;
+        let isAnimating = false;
+
+        function startAnimation() {
+            if (isAnimating) return;
+            
+            isAnimating = true;
+            const container = document.getElementById('animationContainer');
+            
+            // Add convergence class to trigger animation
+            container.classList.add('converged');
+            
+            // Reset after animation completes (longer duration for sequential layers)
+            setTimeout(() => {
+                isAnimating = false;
+            }, 6000 / animationSpeed);
+        }
+
+        function resetAnimation() {
+            isAnimating = false;
+            const container = document.getElementById('animationContainer');
+            container.classList.remove('converged');
+        }
+
+        function toggleSpeed() {
+            const speedText = document.getElementById('speedText');
+            
+            if (animationSpeed === 1) {
+                animationSpeed = 0.5;
+                speedText.textContent = 'Slow';
+                updateAnimationSpeed();
+            } else if (animationSpeed === 0.5) {
+                animationSpeed = 2;
+                speedText.textContent = 'Fast';
+                updateAnimationSpeed();
+            } else {
+                animationSpeed = 1;
+                speedText.textContent = 'Normal';
+                updateAnimationSpeed();
+            }
+        }
+
+        function updateAnimationSpeed() {
+            const duration = 1.5 / animationSpeed;
+            const style = document.createElement('style');
+            style.textContent = `
+                .block {
+                    transition-duration: ${duration}s !important;
+                }
+                .arrow {
+                    transition-duration: ${duration * 0.5}s !important;
+                }
+                .center-block {
+                    transition-duration: ${duration}s !important;
+                }
+                .converged .layer-1,
+                .converged .vulnerability-assessment,
+                .converged .threat-intelligence,
+                .converged .event-detection,
+                .converged .incident-detection,
+                .converged .threat-management,
+                .converged .incident-response {
+                    transition-delay: 0s !important;
+                }
+                .converged .layer-2,
+                .converged .threat-modelling,
+                .converged .security-sdlc,
+                .converged .privacy-design,
+                .converged .security-design {
+                    transition-delay: ${duration * 0.8}s !important;
+                }
+                .converged .layer-3,
+                .converged .homogenic-assurance,
+                .converged .controls-testing,
+                .converged .compliance-mandates,
+                .converged .control-assurance,
+                .converged .control-design {
+                    transition-delay: ${duration * 1.6}s !important;
+                }
+                .converged .center-block {
+                    transition-delay: ${duration * 2.4}s !important;
+                }
+            `;
+            
+            // Remove previous speed style if exists
+            const existingSpeedStyle = document.getElementById('speed-style');
+            if (existingSpeedStyle) {
+                existingSpeedStyle.remove();
+            }
+            
+            style.id = 'speed-style';
+            document.head.appendChild(style);
+        }
+
+        // Auto-start animation after a delay for demo purposes
+        setTimeout(() => {
+            console.log('Demo: Auto-starting animation in 2 seconds...');
+        }, 2000);
+
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case ' ':
+                case 'Enter':
+                    e.preventDefault();
+                    startAnimation();
+                    break;
+                case 'r':
+                case 'R':
+                    resetAnimation();
+                    break;
+                case 's':
+                case 'S':
+                    toggleSpeed();
+                    break;
+            }
+        });
+
+        // Add instruction text
+        setTimeout(() => {
+            const instructions = document.createElement('div');
+            instructions.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                color: #888;
+                font-size: 14px;
+                z-index: 1000;
+            `;
+            instructions.innerHTML = `
+                <div>Press SPACE or ENTER to start animation</div>
+                <div>Press R to reset</div>
+                <div>Press S to change speed</div>
+            `;
+            document.body.appendChild(instructions);
+        }, 1000);
+    </script>
+</body>
+</html>

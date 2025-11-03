@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partners - CredO Cybersecurity</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Assets/favicon.PNG">
+    <link rel="shortcut icon" type="image/png" href="Assets/favicon.PNG">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* EMERGENCY CSS - Force red colors */
+        .hero-title,
+        .section-title,
+        .page-title,
+        .service-title,
+        .layer-title,
+        .module-title,
+        .component-header h3,
+        .threat-title,
+        h1, h2, h3, h4 {
+            color: #4f000b !important;
+        }
+        
+        /* Ultra-specific selectors for browser compatibility */
+        h1[class*="hero"], h1[class*="title"], h2[class*="title"], h3[class*="title"] {
+            color: #4f000b !important;
+        }
+        
+        /* Force red on specific elements by tag */
+        section h1, section h2, section h3, section h4,
+        div h1, div h2, div h3, div h4 {
+            color: #4f000b !important;
+        }
+        
+
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #4f000b 0%, #a10000 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+        
+        /* Partners Cards Styling */
+        .partners-cards-section {
+            padding: 4rem 0 !important;
+            min-height: 400px !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .partners-cards-section .container {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .partners-grid {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 2rem !important;
+            margin-top: 2rem !important;
+            flex-wrap: wrap !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .partners-grid .feature-card-mini {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            text-align: center !important;
+            padding: 3rem 4rem !important;
+            transition: transform 0.3s ease !important;
+            background: rgba(255, 255, 255, 0.15) !important;
+            border: 2px solid rgba(255, 255, 255, 0.3) !important;
+            backdrop-filter: blur(10px) !important;
+            min-width: 300px !important;
+            min-height: 150px !important;
+            box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        .partners-grid .feature-card-mini:hover {
+            transform: translateY(-5px) !important;
+            background: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        .partners-grid .card-content {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .partners-grid .card-title {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            font-size: 2.5rem !important;
+            font-weight: 700 !important;
+            margin: 1rem 0 0 0 !important;
+            color: #ffffff !important;
+            letter-spacing: 0.15em !important;
+            text-transform: uppercase !important;
+        }
+        
+        /* Partner Logo Styling */
+        .partner-logo-container {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            margin-bottom: 1rem !important;
+            width: 100% !important;
+        }
+        
+        .partner-logo {
+            max-width: 200px !important;
+            max-height: 120px !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        /* Light theme override */
+        [data-theme="light"] .partners-grid .card-title {
+            color: #000000 !important;
+        }
+        
+        [data-theme="light"] .partners-grid .feature-card-mini {
+            background: rgba(0, 0, 0, 0.05) !important;
+            border: 2px solid rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        /* Partnering for Success Section Styling */
+        .partnering-success-section {
+            padding: 6rem 0 4rem 0;
+        }
+        
+        .success-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .success-content .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff66 !important;
+        }
+        
+        .success-description {
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .market-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .market-card {
+            padding: 2rem;
+            text-align: left;
+        }
+        
+        .market-card .card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .market-card .card-icon i {
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+        
+        .market-card .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffffff66 !important;
+        }
+        
+        .market-card .card-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .joint-marketing {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .marketing-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffffff66 !important;
+        }
+        
+        .marketing-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Light theme overrides */
+        [data-theme="light"] .success-description,
+        [data-theme="light"] .market-card .card-description,
+        [data-theme="light"] .marketing-description {
+            color: rgba(0, 0, 0, 0.8);
+        }
+        
+        [data-theme="light"] .success-content .section-title {
+            color: #ffffff66 !important;
+        }
+        
+        [data-theme="light"] .market-card .card-title,
+        [data-theme="light"] .marketing-title {
+            color: #ffffff66 !important;
+        }
+        
+        /* Force color for all themes */
+        .marketing-title,
+        .joint-marketing h3,
+        .joint-marketing .marketing-title {
+            color: #ffffff66 !important;
+        }
+        
+        [data-theme="light"] .market-card .card-icon {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        [data-theme="light"] .market-card .card-icon i {
+            color: #000000;
+        }
+        
+        [data-theme="light"] .joint-marketing {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar glass-panel">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="Assets/logo2.PNG" alt="CredO Logo" class="nav-logo">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Solutions</a>
+                    <ul class="dropdown-menu glass-panel">
+                        <li><a href="under-the-hood.html" class="dropdown-link">Under the hood...!</a></li>
+                        <li><a href="enterprise-product.html" class="dropdown-link">Enterprise Product</a></li>
+                        <li><a href="connected-everything.html" class="dropdown-link">Connected Everything</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="partners.html" class="nav-link active">Partners</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Know us</a>
+                    <ul class="dropdown-menu glass-panel">
+                        <li><a href="whos-behind-this.html" class="dropdown-link">Who's behind this</a></li>
+                        <li><a href="who-we-are.html" class="dropdown-link">Who We Are</a></li>
+                        <li><a href="events.html" class="dropdown-link">Events</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="reach-out.html" class="nav-link">Reach out</a></li>
+            </ul>
+            <div class="nav-actions">
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun" id="themeIcon"></i>
+                </button>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Partnering for Success Section -->
+    <section class="partnering-success-section">
+        <div class="container">
+            <div class="success-content">
+                <h2 class="section-title">Partnering for Success</h2>
+                <p class="success-description">
+                    CredO with its strategic partnerships look to accelerate its growth and expand its market reach. We are confident that by working together, we can achieve significant success in the rapidly growing cybersecurity market. Together, we can build a safer and more secure digital future.
+                </p>
+                
+                <div class="market-cards">
+                    <div class="market-card glass-panel">
+                        <h3 class="card-title">European Markets</h3>
+                        <p class="card-description">
+                            CredO have partnered with Dunasys as solution partners in the real time embedded connected systems space. We stand to acquire a market size of 45 M in high value segments of connected airlines, connected train, Aerospace, military systems and smart cities. We also cover high value segments in Banking & Finance, IOT plant operations and Industrial Control systems
+                        </p>
+                    </div>
+                    
+                    <div class="market-card glass-panel">
+                        <h3 class="card-title">North American market</h3>
+                        <p class="card-description">
+                            CredO have a GTM with Gen AI leaders in the security space for capturing an intelligence market of 150M
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="joint-marketing">
+                    <h3 class="marketing-title">Joint Marketing Initiatives</h3>
+                    <p class="marketing-description">
+                        CredO and its partners engage in joint marketing campaigns to raise awareness of their solutions and educate the market on the benefits of AI-driven security.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer glass-panel">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="Assets/logo2.PNG" alt="CredO Logo" class="footer-logo">
+                    <p>Possibilities in AI : Real-Time Security Intelligence</p>
+                </div>
+                <div class="footer-section footer-company">
+                    <h4>Company</h4>
+                    <div class="company-links">
+                        <a href="#">About Us</a>
+                        <span class="separator">•</span>
+                        <a href="#">Careers</a>
+                        <span class="separator">•</span>
+                        <a href="#">Contact</a>
+                    </div>
+                    </div>
+                <div class="footer-section footer-social">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                        <a href="https://www.linkedin.com/company/credort/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/cred_o.official/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CredO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

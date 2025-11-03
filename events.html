@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - CredO</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Match event title color with Events heading */
+        .event-title {
+            color: #ffffff66 !important;
+            text-align: center !important;
+        }
+        
+        /* Dynamic Images Styling */
+        .dynamic-images-container {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .image-slider {
+            position: relative;
+            display: inline-block;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .dynamic-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            transition: opacity 1s ease-in-out;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .dynamic-image.active {
+            opacity: 1;
+            position: relative;
+        }
+        
+        .dynamic-image:first-child {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar glass-panel">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="Assets/logo2.PNG" alt="CredO Logo" class="nav-logo">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Solutions</a>
+                    <ul class="dropdown-menu glass-panel">
+                        <li><a href="under-the-hood.html" class="dropdown-link">Under the hood...!</a></li>
+                        <li><a href="enterprise-product.html" class="dropdown-link">Enterprise Product</a></li>
+                        <li><a href="connected-everything.html" class="dropdown-link">Connected Everything</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="partners.html" class="nav-link">Partners</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Know us</a>
+                    <ul class="dropdown-menu glass-panel">
+                        <li><a href="whos-behind-this.html" class="dropdown-link">Who's behind this</a></li>
+                        <li><a href="who-we-are.html" class="dropdown-link">Who We Are</a></li>
+                        <li><a href="events.html" class="dropdown-link active">Events</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="reach-out.html" class="nav-link">Reach out</a></li>
+            </ul>
+            <div class="nav-actions">
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun" id="themeIcon"></i>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Events Section -->
+            <section class="events-section">
+                <div class="section-header">
+                    <h1 class="section-title">
+                        <span class="highlight-text">Events</span>
+                    </h1>
+                </div>
+                
+                <div class="events-content">
+                    <div class="event-card glass-panel">
+                        <div class="event-content">
+                            <h3 class="event-title">Global Start up Summit 2025</h3>
+                            
+                            <!-- Dynamic Images Section -->
+                            <div class="dynamic-images-container">
+                                <div class="image-slider">
+                                    <img src="Assets/event-image-1.png" alt="CredO Event Image 1" class="dynamic-image active" id="image1">
+                                    <img src="Assets/event-image-2.png" alt="CredO Event Image 2" class="dynamic-image" id="image2">
+                                    <img src="Assets/event-image-3.png" alt="CredO Event Image 3" class="dynamic-image" id="image3">
+                                    <img src="Assets/event-image-4.png" alt="CredO Event Image 4" class="dynamic-image" id="image4">
+                                </div>
+                            </div>
+                            
+                            <p class="event-description">
+                                Grateful for the platform to share our journey, our mission, and what we're building. Even more excited for the opportunities and collaborations that lie ahead.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer glass-panel">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="Assets/logo2.PNG" alt="CredO Logo" class="footer-logo">
+                    <p>Possibilities in AI : Real-Time Security Intelligence</p>
+                </div>
+                <div class="footer-section footer-company">
+                    <h4>Company</h4>
+                    <div class="company-links">
+                        <a href="#">About Us</a>
+                        <span class="separator">•</span>
+                        <a href="#">Careers</a>
+                        <span class="separator">•</span>
+                        <a href="#">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-section footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/credort/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/cred_o.official/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CredO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+            // Mobile menu toggle
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            // Dropdown toggle functionality
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const dropdownMenu = this.nextElementSibling;
+                    dropdownMenu.classList.toggle('show');
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.navbar')) {
+                    dropdownToggles.forEach(toggle => {
+                        toggle.nextElementSibling.classList.remove('show');
+                    });
+                }
+            });
+
+            // Theme toggle functionality
+            const themeToggleBtn = document.getElementById('themeToggle');
+            const body = document.body;
+
+            // Set initial theme based on localStorage or default to dark
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            body.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'light') {
+                themeToggleBtn.innerHTML = '<i class="fas fa-moon" id="themeIcon"></i>';
+            } else {
+                themeToggleBtn.innerHTML = '<i class="fas fa-sun" id="themeIcon"></i>';
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                if (body.getAttribute('data-theme') === 'dark') {
+                    body.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                    themeToggleBtn.innerHTML = '<i class="fas fa-moon" id="themeIcon"></i>';
+                } else {
+                    body.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                    themeToggleBtn.innerHTML = '<i class="fas fa-sun" id="themeIcon"></i>';
+                }
+            });
+            
+            // Dynamic Images Functionality
+            function startImageRotation() {
+                const images = document.querySelectorAll('.dynamic-image');
+                let currentImageIndex = 0;
+                
+                function showNextImage() {
+                    // Hide current image
+                    images[currentImageIndex].classList.remove('active');
+                    images[currentImageIndex].style.position = 'absolute';
+                    
+                    // Move to next image
+                    currentImageIndex = (currentImageIndex + 1) % images.length;
+                    
+                    // Show next image
+                    images[currentImageIndex].classList.add('active');
+                    images[currentImageIndex].style.position = 'relative';
+                }
+                
+                // Change image every 3 seconds
+                setInterval(showNextImage, 3000);
+            }
+            
+            // Start image rotation when page loads
+            startImageRotation();
+        });
+    </script>
+</body>
+</html>

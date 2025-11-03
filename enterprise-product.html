@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Product - CredO Cybersecurity</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Assets/favicon.PNG">
+    <link rel="shortcut icon" type="image/png" href="Assets/favicon.PNG">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* EMERGENCY CSS - Force red colors */
+        .hero-title,
+        .section-title,
+        .page-title,
+        .service-title,
+        .layer-title,
+        .module-title,
+        .component-header h3,
+        .threat-title,
+        h1, h2, h3, h4 {
+            color: #4f000b !important;
+        }
+        
+        /* Ultra-specific selectors for browser compatibility */
+        h1[class*="hero"], h1[class*="title"], h2[class*="title"], h3[class*="title"] {
+            color: #4f000b !important;
+        }
+        
+        /* Force red on specific elements by tag */
+        section h1, section h2, section h3, section h4,
+        div h1, div h2, div h3, div h4 {
+            color: #4f000b !important;
+        }
+        
+
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #4f000b 0%, #a10000 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+        
+        /* Convergence Animation Styles */
+        .convergence-animation-section {
+            padding: 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .convergence-animation-section::before {
+            content: 'credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse  credOverse';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 11px;
+            font-weight: 300;
+            color: rgba(99, 102, 241, 0.15);
+            letter-spacing: 2px;
+            word-spacing: 30px;
+            line-height: 40px;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+            white-space: pre-wrap;
+            padding: 10px 10px 0 10px;
+        }
+        
+        .animation-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: scale(0.85);
+        }
+        
+        
+        /* Block Styles */
+        .block {
+            position: absolute;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            transition: all 3.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        
+        .block.primary {
+            background: #a8c8e1;
+            color: #2c3e50;
+        }
+        
+        .block.secondary {
+            background: #a8d8c0;
+            color: #2c3e50;
+        }
+        
+        .block.tertiary {
+            background: #ffc690;
+            color: #8b4513;
+            border: 2px solid #d4a574;
+        }
+        
+        .block.threat-intelligence,
+        .block.event-detection,
+        .block.incident-detection,
+        .block.threat-management,
+        .block.incident-response {
+            background: #4338ca;
+            color: #f1f5f9;
+            border: 2px solid #3730a3;
+        }
+        
+        .block.vulnerability-assessment {
+            background: #4338ca;
+            color: #f1f5f9;
+            border: 2px solid #3730a3;
+        }
+        
+        .block.homogenic-assurance,
+        .block.controls-testing,
+        .block.compliance-mandates,
+        .block.control-assurance,
+        .block.control-design {
+            background: #8b5cf6;
+            color: #f1f5f9;
+            border: 2px solid #7c3aed;
+        }
+        
+        .block.threat-modelling,
+        .block.security-sdlc,
+        .block.privacy-design,
+        .block.security-design {
+            background: #6366f1;
+            color: #f1f5f9;
+            border: 2px solid #4f46e5;
+        }
+        
+        /* Arrow Styles */
+        .arrow {
+            position: absolute;
+            transition: all 3.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 5;
+        }
+        
+        .arrow-chevron {
+            width: 0;
+            height: 0;
+            position: relative;
+        }
+        
+        /* Chevron patterns */
+        .chevron-up::before,
+        .chevron-up::after,
+        .chevron-down::before,
+        .chevron-down::after,
+        .chevron-left::before,
+        .chevron-left::after,
+        .chevron-right::before,
+        .chevron-right::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 4px;
+            background: #4f000b;
+            transform-origin: center;
+        }
+        
+        .chevron-up::before { transform: rotate(45deg) translate(-5px, 5px); }
+        .chevron-up::after { transform: rotate(-45deg) translate(5px, 5px); }
+        
+        .chevron-down::before { transform: rotate(-45deg) translate(-5px, -5px); }
+        .chevron-down::after { transform: rotate(45deg) translate(5px, -5px); }
+        
+        .chevron-left::before { transform: rotate(45deg) translate(5px, 5px); }
+        .chevron-left::after { transform: rotate(-45deg) translate(5px, -5px); }
+        
+        .chevron-right::before { transform: rotate(-45deg) translate(-5px, 5px); }
+        .chevron-right::after { transform: rotate(45deg) translate(-5px, -5px); }
+        
+        /* Multi-chevron arrows */
+        .multi-chevron {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .multi-chevron.horizontal {
+            flex-direction: row;
+        }
+        
+        .multi-chevron.vertical {
+            flex-direction: column;
+        }
+        
+        /* Center CredO Block */
+        .center-block {
+            position: absolute;
+            top: 48%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #4f000b 0%, #a10000 100%);
+            color: white;
+            padding: 18px 35px;
+            border-radius: 8px;
+            font-size: 22px;
+            font-weight: 700;
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+            z-index: 20;
+            transition: all 3.5s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .credo-logo {
+            max-width: 80px;
+            max-height: 35px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+        
+        /* Concentric Square Positions */
+        
+        /* Outer Square (Layer 3) */
+        .homogenic-assurance { top: 5%; left: 35%; }
+        .controls-testing { top: 5%; right: 35%; }
+        .compliance-mandates { top: 45%; left: 5%; }
+        .control-assurance { top: 45%; right: 5%; }
+        .control-design { bottom: 5%; left: 45%; transform: translateX(-50%); }
+        
+        /* Middle Square (Layer 2) - Diagonal positioning around inner square */
+        .threat-modelling { top: 22%; left: 22%; }
+        .security-sdlc { top: 22%; right: 22%; }
+        .privacy-design { bottom: 22%; left: 22%; }
+        .security-design { bottom: 22%; right: 22%; }
+        
+        /* Inner Square (Layer 1) - Positioned around CredO */
+        /* Top row - above CredO, centered and spaced */
+        .vulnerability-assessment { top: 25%; left: 40%; }
+        .threat-intelligence { top: 25%; right: 40%; }
+        
+        /* Side blocks - left and right of CredO */
+        .event-detection { top: 45%; left: 25%; }
+        .incident-detection { top: 45%; right: 25%; }
+        
+        /* Bottom row - below CredO, centered and spaced */
+        .threat-management { bottom: 25%; left: 40%; }
+        .incident-response { bottom: 25%; right: 40%; }
+
+        /* Arrow Positions */
+        .arrow-top { top: 18%; left: 50%; transform: translateX(-50%); }
+        .arrow-top-left { top: 12%; left: 12%; }
+        .arrow-top-right { top: 12%; right: 12%; }
+        .arrow-left { top: 50%; left: 18%; transform: translateY(-50%); }
+        .arrow-right { top: 50%; right: 18%; transform: translateY(-50%); }
+        .arrow-bottom-left { bottom: 12%; left: 12%; }
+        .arrow-bottom-right { bottom: 12%; right: 12%; }
+        .arrow-bottom { bottom: 18%; left: 50%; transform: translateX(-50%); }
+        
+        /* Layer Classes for Animation */
+        .layer-1 { z-index: 15; }
+        .layer-2 { z-index: 14; }
+        .layer-3 { z-index: 13; }
+        
+        /* Animation States */
+        .block {
+            transition: all 3.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Animation approach: Use transform to move from current position to center */
+        .converged .layer-1 {
+            opacity: 0;
+            transition-delay: 0s;
+        }
+        
+        /* Specific convergence transforms for each block based on their current position */
+        .converged .vulnerability-assessment {
+            transform: translate(10%, 90%) scale(0);
+        }
+        
+        .converged .threat-intelligence {
+            transform: translate(-10%, 90%) scale(0);
+        }
+        
+        .converged .event-detection {
+            transform: translate(100%, 5%) scale(0);
+        }
+        
+        .converged .incident-detection {
+            transform: translate(-100%, 5%) scale(0);
+        }
+        
+        .converged .threat-management {
+            transform: translate(10%, -90%) scale(0);
+        }
+        
+        .converged .incident-response {
+            transform: translate(-10%, -90%) scale(0);
+        }
+        
+        .converged .layer-2 {
+            opacity: 0;
+            transition-delay: 1.2s;
+        }
+        
+        .converged .threat-modelling {
+            transform: translate(130%, 120%) scale(0);
+        }
+        
+        .converged .security-sdlc {
+            transform: translate(-130%, 120%) scale(0);
+        }
+        
+        .converged .privacy-design {
+            transform: translate(130%, -120%) scale(0);
+        }
+        
+        .converged .security-design {
+            transform: translate(-130%, -120%) scale(0);
+        }
+        
+        .converged .layer-3 {
+            opacity: 0;
+            transition-delay: 2.4s;
+        }
+        
+        .converged .homogenic-assurance {
+            transform: translate(40%, 1200%) scale(0);
+        }
+        
+        .converged .controls-testing {
+            transform: translate(-40%, 1200%) scale(0);
+        }
+        
+        .converged .compliance-mandates {
+            transform: translate(900%, 8%) scale(0);
+        }
+        
+        .converged .control-assurance {
+            transform: translate(-900%, 8%) scale(0);
+        }
+        
+        .converged .control-design {
+            transform: translate(0%, -1200%) scale(0);
+        }
+        
+        .converged .arrow {
+            opacity: 0;
+            transform: scale(0);
+            transition-delay: 0.5s;
+        }
+        
+        .converged .center-block {
+            transform: translate(-50%, -50%) scale(1.2);
+            box-shadow: 0 15px 50px rgba(99, 102, 241, 0.6);
+            transition-delay: 3.6s;
+        }
+        
+        /* Glow effect for final state */
+        @keyframes finalGlow {
+            0%, 100% {
+                box-shadow: 0 15px 50px rgba(99, 102, 241, 0.6);
+            }
+            50% {
+                box-shadow: 0 20px 60px rgba(99, 102, 241, 0.8);
+            }
+        }
+        
+        .converged .center-block {
+            animation: finalGlow 2s ease-in-out infinite;
+        }
+        
+        /* Reverse Animation - Move from center back to original positions */
+        .reverse .layer-1 {
+            opacity: 1;
+            transform: translate(0, 0) scale(1);
+            transition-delay: 0s;
+        }
+        
+        .reverse .layer-2 {
+            opacity: 1;
+            transform: translate(0, 0) scale(1);
+            transition-delay: 0.8s;
+        }
+        
+        .reverse .layer-3 {
+            opacity: 1;
+            transform: translate(0, 0) scale(1);
+            transition-delay: 1.6s;
+        }
+        
+        .reverse .center-block {
+            transform: translate(-50%, -50%) scale(1);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+            transition-delay: 2.4s;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .animation-container {
+                height: 400px;
+            }
+            
+            .block {
+                font-size: 11px;
+                padding: 8px 12px;
+                min-width: 90px;
+            }
+            
+            .center-block {
+                font-size: 16px;
+                padding: 12px 25px;
+            }
+            
+            .credo-logo {
+                max-width: 50px;
+                max-height: 25px;
+            }
+            
+        }
+        
+        /* Enterprise Product Page Subtitle Spacing */
+        .page-subtitle {
+            max-width: 98vw;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: justify;
+            text-justify: inter-word;
+            word-spacing: normal;
+            letter-spacing: 0.05em;
+            line-height: 1.4;
+            font-size: 1.1rem;
+        }
+        
+        /* Center align Homogenic Assurance content - Override animation CSS */
+        section.homogenic-assurance {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-height: 80vh !important;
+            position: static !important;
+            top: auto !important;
+            left: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            transform: none !important;
+        }
+        
+        .homogenic-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .homogenic-text {
+            text-align: center;
+        }
+        
+        .homogenic-subtitle {
+            text-align: center;
+        }
+        
+        .homogenic-details {
+            text-align: center;
+        }
+        
+        /* Center align the section title */
+        .homogenic-assurance .section-title {
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar glass-panel">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="Assets/logo2.PNG" alt="CredO Logo" class="nav-logo">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Solutions</a>
+                    <ul class="dropdown-menu glass-panel">
+                        <li><a href="under-the-hood.html" class="dropdown-link">Under the hood...!</a></li>
+                        <li><a href="enterprise-product.html" class="dropdown-link active">Enterprise Product</a></li>
+                        <li><a href="connected-everything.html" class="dropdown-link">Connected Everything</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="partners.html" class="nav-link">Partners</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Know us</a>
+                    <ul class="dropdown-menu glass-panel">
+                        <li><a href="whos-behind-this.html" class="dropdown-link">Who's behind this</a></li>
+                        <li><a href="who-we-are.html" class="dropdown-link">Who We Are</a></li>
+                        <li><a href="events.html" class="dropdown-link">Events</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="reach-out.html" class="nav-link">Reach out</a></li>
+            </ul>
+            <div class="nav-actions">
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun" id="themeIcon"></i>
+                </button>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="page-title">
+                    Enterprise <span class="gradient-text">Product</span>
+                </h1>
+                <p class="page-subtitle">
+                    CredO enterprise products leverage cutting-edge AI technology for unparalleled software protection. Advanced security algorithms and intelligent threat detection safeguard your digital assets like never before.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Convergence Animation Section -->
+    <section class="convergence-animation-section">
+        <div class="animation-container" id="convergenceAnimationContainer">
+                <!-- Center CredO Block -->
+                <div class="center-block" id="centerBlock">
+                    <img src="Assets/logo2.PNG" alt="CREDO" class="credo-logo">
+                </div>
+                
+                <!-- Layer 3 - Outer Square -->
+                <div class="block primary layer-3 homogenic-assurance">Homogenic<br>Assurance</div>
+                <div class="block primary layer-3 controls-testing">Controls<br>Testing</div>
+                <div class="block primary layer-3 compliance-mandates">Compliance<br>Mandates</div>
+                <div class="block primary layer-3 control-assurance">Control<br>Assurance</div>
+                <div class="block primary layer-3 control-design">Control Design</div>
+
+                <!-- Layer 2 - Middle Square (Diagonal corners) -->
+                <div class="block secondary layer-2 threat-modelling">Threat<br>Modelling</div>
+                <div class="block secondary layer-2 security-sdlc">Security In<br>SDLC</div>
+                <div class="block secondary layer-2 privacy-design">Privacy<br>Design</div>
+                <div class="block secondary layer-2 security-design">Security<br>Design</div>
+
+                <!-- Layer 1 - Inner Square around CredO -->
+                <div class="block tertiary layer-1 vulnerability-assessment">Vulnerability<br>Assessment</div>
+                <div class="block tertiary layer-1 threat-intelligence">Threat<br>Intelligence</div>
+                <div class="block tertiary layer-1 event-detection">Event<br>Detection</div>
+                <div class="block tertiary layer-1 incident-detection">Incident<br>Detection</div>
+                <div class="block tertiary layer-1 threat-management">Threat<br>Management</div>
+                <div class="block tertiary layer-1 incident-response">Incident<br>Response</div>
+
+                <!-- Arrows pointing toward center -->
+                <div class="arrow arrow-top">
+                    <div class="multi-chevron vertical">
+                        <div class="arrow-chevron chevron-down"></div>
+                        <div class="arrow-chevron chevron-down"></div>
+                        <div class="arrow-chevron chevron-down"></div>
+                    </div>
+                </div>
+                
+                <div class="arrow arrow-top-left">
+                    <div class="multi-chevron diagonal" style="transform: rotate(45deg);">
+                        <div class="arrow-chevron chevron-down"></div>
+                        <div class="arrow-chevron chevron-down"></div>
+                        <div class="arrow-chevron chevron-down"></div>
+                    </div>
+                </div>
+                
+                <div class="arrow arrow-top-right">
+                    <div class="multi-chevron diagonal" style="transform: rotate(-45deg);">
+                        <div class="arrow-chevron chevron-down"></div>
+                        <div class="arrow-chevron chevron-down"></div>
+                        <div class="arrow-chevron chevron-down"></div>
+                    </div>
+                </div>
+
+                <div class="arrow arrow-left">
+                    <div class="multi-chevron horizontal">
+                        <div class="arrow-chevron chevron-right"></div>
+                        <div class="arrow-chevron chevron-right"></div>
+                        <div class="arrow-chevron chevron-right"></div>
+                    </div>
+                </div>
+                
+                <div class="arrow arrow-right">
+                    <div class="multi-chevron horizontal">
+                        <div class="arrow-chevron chevron-left"></div>
+                        <div class="arrow-chevron chevron-left"></div>
+                        <div class="arrow-chevron chevron-left"></div>
+                    </div>
+                </div>
+                
+                <div class="arrow arrow-bottom-left">
+                    <div class="multi-chevron diagonal" style="transform: rotate(-45deg);">
+                        <div class="arrow-chevron chevron-up"></div>
+                        <div class="arrow-chevron chevron-up"></div>
+                        <div class="arrow-chevron chevron-up"></div>
+                    </div>
+                </div>
+
+                <div class="arrow arrow-bottom-right">
+                    <div class="multi-chevron diagonal" style="transform: rotate(45deg);">
+                        <div class="arrow-chevron chevron-up"></div>
+                        <div class="arrow-chevron chevron-up"></div>
+                        <div class="arrow-chevron chevron-up"></div>
+                    </div>
+                </div>
+                
+                <div class="arrow arrow-bottom">
+                    <div class="multi-chevron vertical">
+                        <div class="arrow-chevron chevron-up"></div>
+                        <div class="arrow-chevron chevron-up"></div>
+                        <div class="arrow-chevron chevron-up"></div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Homogenic Assurance Section -->
+    <section class="homogenic-assurance">
+        <div class="container">
+            <h2 class="section-title">Homogenic Assurance</h2>
+            <div class="homogenic-content">
+                <div class="homogenic-text">
+                    <p class="homogenic-subtitle">Your cyber posture, standardized and predictable — at every checkpoint.</p>
+                    
+                    <div class="homogenic-details">
+                        <p>Evaluations are <strong>time-stamped to the second</strong>, mapped across your full digital estate. Frequency is <strong>adaptive</strong>: daily for high-value assets, hourly for volatile endpoints, and real time for critical transaction pipelines. Each run is linked to the originating system — whether that's your ERP core, payment gateway, or IoT cluster — creating a living compliance map you can prove anytime.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Controls Testing Section -->
+    <section class="controls-testing">
+        <div class="container">
+            <h2 class="section-title">Controls Testing</h2>
+            <p class="section-subtitle">From design to deployment — controls you can trust, proven every time.</p>
+            
+            <div class="controls-content">
+                <p>We run <strong>continuous, timestamped validation</strong> against threat models, compliance mandates, and custom security baselines. Frequency is tuned to risk profile: firewalls and identity providers get <strong>continuous probes</strong>, business apps get daily cycles, and regulatory checkpoints follow <strong>audit-specific schedules</strong>. Every result links directly to system context blocks, so you know not just if a control passed — but <strong>exactly where and why it protects you</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security in SDLC Section -->
+    <section class="security-sdlc">
+        <div class="container">
+            <h2 class="section-title">Security in SDLC</h2>
+            <p class="section-subtitle">Security by design, tested at every code commit.</p>
+            
+            <div class="sdlc-content">
+                <p>Integrated scans at <strong>each build stage</strong> ensure vulnerabilities are found early. Timestamps track security gates across Dev, Test, and Production, while frequency matches your deployment rhythm — from <strong>every CI/CD push to monthly hardening sprints</strong>. Linked context connects each finding back to the code module, API endpoint, or microservice it impacts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Design & Incident Detection Section -->
+    <section class="security-design-incident">
+        <div class="container">
+            <div class="two-column-grid">
+                <div class="column">
+                    <h2 class="section-title">Security Design</h2>
+                    <p class="section-subtitle">Architectures built to anticipate, not just react.</p>
+                    
+                    <div class="design-content">
+                        <p>Every design review is logged with <strong>design-stage timestamps</strong>, and revisited quarterly or on <strong>trigger events</strong> (like infrastructure changes). Linked intelligence blocks tie design elements to the systems they protect, so your blueprint evolves with your actual threat landscape.</p>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <h2 class="section-title">Incident Detection</h2>
+                    <p class="section-subtitle">Catch the breach before it becomes a headline.</p>
+                    
+                    <div class="incident-content">
+                        <p>Detections are logged <strong>in real time</strong> with event-source timestamps — from intrusion attempts on your cloud perimeter to anomalies in your OT network. Frequency is <strong>continuous</strong>, with linked blocks showing which asset, application, or process triggered the alert.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Incident Response Timeline Section -->
+    <section class="incident-response-timeline">
+        <div class="container">
+            <div class="timeline-container">
+                <div class="timeline-step" data-step="1">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h3>Incident Response</h3>
+                        <p class="timeline-subtitle">When every second counts, we're already moving.</p>
+                        <div class="timeline-details">
+                            <p>Response playbooks activate instantly upon detection, with <strong>action timestamps</strong> marking every containment step. Frequency of drills is <strong>quarterly</strong> for enterprise ops and monthly for <strong>high-risk zones</strong>. Linked blocks connect each action to the originating incident and impacted system for instant post-mortem clarity.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-step" data-step="2">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h3>Threat Management</h3>
+                        <p class="timeline-subtitle">From identification to neutralization — threats don't linger here.</p>
+                        <div class="timeline-details">
+                            <p>Every threat is logged with <strong>detection-to-closure timestamps</strong>. Frequency of re-evaluation is <strong>daily</strong> for ongoing campaigns, <strong>hourly</strong> during elevated threat levels. Linked context ties each threat case to the impacted business unit and protection measures in place.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-step" data-step="3">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h3>Event Detection</h3>
+                        <p class="timeline-subtitle">See the signal through the noise.</p>
+                        <div class="timeline-details">
+                            <p>All security events are captured with <strong>precise occurrence timestamps</strong> and analyzed in context. Frequency is <strong>continuous ingestion</strong> with minute-by-minute <strong>analytics refresh</strong>. Linked info blocks map each event to upstream systems and downstream impacts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Threat Intelligence Grid Section -->
+    <section class="threat-intelligence-grid">
+        <div class="container">
+            <div class="intelligence-grid">
+                <div class="intel-card">
+                    <h2 class="section-title">Threat Modelling</h2>
+                    <p class="intel-subtitle">Anticipate attacks before they materialize.</p>
+                    <div class="intel-content">
+                        <p>Models are updated <strong>weekly</strong> or upon any architecture change, with timestamped scenario runs. Linked context connects each threat scenario to vulnerable components and relevant mitigation strategies.</p>
+                    </div>
+                </div>
+                
+                <div class="intel-card">
+                    <h2 class="section-title">Vulnerability Assessment</h2>
+                    <p class="intel-subtitle">The holes you don't see are the ones that hurt you.</p>
+                    <div class="intel-content">
+                        <p>Scans run <strong>weekly on all assets</strong>, with critical systems scanned <strong>daily</strong>. All findings are timestamped at discovery and linked directly to remediation tickets and affected systems.</p>
+                    </div>
+                </div>
+                
+                <div class="intel-card">
+                    <h2 class="section-title">Threat Intelligence</h2>
+                    <p class="intel-subtitle">Turn raw data into decisive action.</p>
+                    <div class="intel-content">
+                        <p>Feeds update in <strong>real time</strong>, with ingestion timestamps and linked relevance blocks mapping each intel item to applicable threats and systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Design Section -->
+    <section class="privacy-design">
+        <div class="container">
+            <h2 class="section-title">Privacy Design</h2>
+            <p class="section-subtitle">Privacy isn't an afterthought — it's the foundation.</p>
+            
+            <div class="privacy-content">
+                <p>Evaluations are timestamped at every design review, with frequency <strong>quarterly or upon legislative change</strong>. Linked blocks map privacy controls to the specific data flows and systems they govern.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer glass-panel">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="Assets/logo2.PNG" alt="CredO Logo" class="footer-logo">
+                    <p>Possibilities in AI : Real-Time Security Intelligence</p>
+                </div>
+                <div class="footer-section footer-company">
+                    <h4>Company</h4>
+                    <div class="company-links">
+                        <a href="#">About Us</a>
+                        <span class="separator">•</span>
+                        <a href="#">Careers</a>
+                        <span class="separator">•</span>
+                        <a href="#">Contact</a>
+                    </div>
+                    </div>
+                <div class="footer-section footer-social">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                        <a href="https://www.linkedin.com/company/credort/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/cred_o.official/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CredO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <!-- Convergence Animation Script -->
+    <script>
+        let convergenceAnimationSpeed = 1;
+        let isConvergenceAnimating = false;
+
+        function startConvergenceAnimation() {
+            if (isConvergenceAnimating) return;
+            
+            isConvergenceAnimating = true;
+            const container = document.getElementById('convergenceAnimationContainer');
+            
+            // Add convergence class to trigger animation
+            container.classList.add('converged');
+            
+            // Reset after animation completes (longer duration for sequential layers)
+            setTimeout(() => {
+                isConvergenceAnimating = false;
+            }, 6000 / convergenceAnimationSpeed);
+        }
+
+        function resetConvergenceAnimation() {
+            isConvergenceAnimating = false;
+            const container = document.getElementById('convergenceAnimationContainer');
+            container.classList.remove('converged', 'reverse');
+        }
+
+        function reverseConvergenceAnimation() {
+            if (isConvergenceAnimating) return;
+            
+            isConvergenceAnimating = true;
+            const container = document.getElementById('convergenceAnimationContainer');
+            
+            // First ensure we're at converged state, then remove it to trigger reverse
+            container.classList.add('converged');
+            
+            // Small delay to ensure converged state is applied
+            setTimeout(() => {
+                container.classList.remove('converged');
+                container.classList.add('reverse');
+                
+                // Reset after animation completes
+                setTimeout(() => {
+                    isConvergenceAnimating = false;
+                    container.classList.remove('reverse');
+                }, 6000 / convergenceAnimationSpeed);
+            }, 50);
+        }
+
+        function toggleConvergenceSpeed() {
+            const speedText = document.getElementById('convergenceSpeedText');
+            
+            if (convergenceAnimationSpeed === 1) {
+                convergenceAnimationSpeed = 0.5;
+                speedText.textContent = 'Slow';
+                updateConvergenceAnimationSpeed();
+            } else if (convergenceAnimationSpeed === 0.5) {
+                convergenceAnimationSpeed = 2;
+                speedText.textContent = 'Fast';
+                updateConvergenceAnimationSpeed();
+            } else {
+                convergenceAnimationSpeed = 1;
+                speedText.textContent = 'Normal';
+                updateConvergenceAnimationSpeed();
+            }
+        }
+
+        function updateConvergenceAnimationSpeed() {
+            const duration = 1.5 / convergenceAnimationSpeed;
+            const style = document.createElement('style');
+            style.textContent = `
+                #convergenceAnimationContainer .block {
+                    transition-duration: ${duration}s !important;
+                }
+                #convergenceAnimationContainer .arrow {
+                    transition-duration: ${duration * 0.5}s !important;
+                }
+                #convergenceAnimationContainer .center-block {
+                    transition-duration: ${duration}s !important;
+                }
+                #convergenceAnimationContainer.converged .layer-1,
+                #convergenceAnimationContainer.converged .vulnerability-assessment,
+                #convergenceAnimationContainer.converged .threat-intelligence,
+                #convergenceAnimationContainer.converged .event-detection,
+                #convergenceAnimationContainer.converged .incident-detection,
+                #convergenceAnimationContainer.converged .threat-management,
+                #convergenceAnimationContainer.converged .incident-response {
+                    transition-delay: 0s !important;
+                }
+                #convergenceAnimationContainer.converged .layer-2,
+                #convergenceAnimationContainer.converged .threat-modelling,
+                #convergenceAnimationContainer.converged .security-sdlc,
+                #convergenceAnimationContainer.converged .privacy-design,
+                #convergenceAnimationContainer.converged .security-design {
+                    transition-delay: ${duration * 0.8}s !important;
+                }
+                #convergenceAnimationContainer.converged .layer-3,
+                #convergenceAnimationContainer.converged .homogenic-assurance,
+                #convergenceAnimationContainer.converged .controls-testing,
+                #convergenceAnimationContainer.converged .compliance-mandates,
+                #convergenceAnimationContainer.converged .control-assurance,
+                #convergenceAnimationContainer.converged .control-design {
+                    transition-delay: ${duration * 1.6}s !important;
+                }
+                #convergenceAnimationContainer.converged .center-block {
+                    transition-delay: ${duration * 2.4}s !important;
+                }
+                #convergenceAnimationContainer.reverse .layer-1,
+                #convergenceAnimationContainer.reverse .vulnerability-assessment,
+                #convergenceAnimationContainer.reverse .threat-intelligence,
+                #convergenceAnimationContainer.reverse .event-detection,
+                #convergenceAnimationContainer.reverse .incident-detection,
+                #convergenceAnimationContainer.reverse .threat-management,
+                #convergenceAnimationContainer.reverse .incident-response {
+                    transition-delay: 0s !important;
+                }
+                #convergenceAnimationContainer.reverse .layer-2,
+                #convergenceAnimationContainer.reverse .threat-modelling,
+                #convergenceAnimationContainer.reverse .security-sdlc,
+                #convergenceAnimationContainer.reverse .privacy-design,
+                #convergenceAnimationContainer.reverse .security-design {
+                    transition-delay: ${duration * 0.8}s !important;
+                }
+                #convergenceAnimationContainer.reverse .layer-3,
+                #convergenceAnimationContainer.reverse .homogenic-assurance,
+                #convergenceAnimationContainer.reverse .controls-testing,
+                #convergenceAnimationContainer.reverse .compliance-mandates,
+                #convergenceAnimationContainer.reverse .control-assurance,
+                #convergenceAnimationContainer.reverse .control-design {
+                    transition-delay: ${duration * 1.6}s !important;
+                }
+                #convergenceAnimationContainer.reverse .center-block {
+                    transition-delay: ${duration * 2.4}s !important;
+                }
+            `;
+            
+            // Remove previous speed style if exists
+            const existingSpeedStyle = document.getElementById('convergence-speed-style');
+            if (existingSpeedStyle) {
+                existingSpeedStyle.remove();
+            }
+            
+            style.id = 'convergence-speed-style';
+            document.head.appendChild(style);
+        }
+
+        // Auto-start reverse animation when section comes into view
+        function setupAutoStart() {
+            const animationSection = document.querySelector('.convergence-animation-section');
+            const animationContainer = document.getElementById('convergenceAnimationContainer');
+            
+            if (!animationSection || !animationContainer) return;
+            
+            // Set initial state to converged (all elements at center, collapsed)
+            // Remove transitions temporarily to apply instant state
+            animationContainer.style.transition = 'none';
+            const allElements = animationContainer.querySelectorAll('.block, .arrow, .center-block');
+            allElements.forEach(el => el.style.transition = 'none');
+            
+            animationContainer.classList.add('converged');
+            
+            // Force reflow to apply the converged state immediately
+            void animationContainer.offsetHeight;
+            
+            // Re-enable transitions after state is applied
+            setTimeout(() => {
+                animationContainer.style.transition = '';
+                allElements.forEach(el => el.style.transition = '');
+            }, 100);
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // When user scrolls to section, play reverse (expand outward)
+                        if (!isConvergenceAnimating) {
+                            setTimeout(() => {
+                                isConvergenceAnimating = true;
+                                animationContainer.classList.remove('converged');
+                                animationContainer.classList.add('reverse');
+                                
+                                setTimeout(() => {
+                                    isConvergenceAnimating = false;
+                                }, 8000);
+                            }, 500);
+                        }
+                    } else {
+                        // When user scrolls away, reset to converged state
+                        if (isConvergenceAnimating) {
+                            isConvergenceAnimating = false;
+                        }
+                        
+                        // Reset to initial converged state instantly
+                        animationContainer.style.transition = 'none';
+                        const allElements = animationContainer.querySelectorAll('.block, .arrow, .center-block');
+                        allElements.forEach(el => el.style.transition = 'none');
+                        
+                        animationContainer.classList.remove('reverse');
+                        animationContainer.classList.add('converged');
+                        
+                        // Force reflow
+                        void animationContainer.offsetHeight;
+                        
+                        // Re-enable transitions
+                        setTimeout(() => {
+                            animationContainer.style.transition = '';
+                            allElements.forEach(el => el.style.transition = '');
+                        }, 100);
+                    }
+                });
+            }, {
+                threshold: 0.3 // Trigger when 30% of section is visible
+            });
+            
+            observer.observe(animationSection);
+        }
+        
+        // Initialize auto-start when DOM is loaded
+        document.addEventListener('DOMContentLoaded', setupAutoStart);
+    </script>
+</body>
+</html>

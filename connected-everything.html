@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connected Everything - CredO Cybersecurity</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Assets/favicon.PNG">
+    <link rel="shortcut icon" type="image/png" href="Assets/favicon.PNG">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* EMERGENCY CSS - Force red colors */
+        .hero-title,
+        .section-title,
+        .page-title,
+        .service-title,
+        .layer-title,
+        .module-title,
+        .component-header h3,
+        .threat-title,
+        h1, h2, h3:not(.block-title), h4 {
+            color: #4f000b !important;
+        }
+        
+        /* Ultra-specific selectors for browser compatibility */
+        h1[class*="hero"], h1[class*="title"], h2[class*="title"], h3[class*="title"]:not(.block-title) {
+            color: #4f000b !important;
+        }
+        
+        /* Force red on specific elements by tag */
+        section h1, section h2, section h3:not(.block-title), section h4,
+        div h1, div h2, div h3:not(.block-title), div h4 {
+            color: #4f000b !important;
+        }
+        
+
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #4f000b 0%, #a10000 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+        
+        /* Industry Blocks Styling */
+        .connected-everything-blocks {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+        
+        .industry-block {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .block-text {
+            max-width: 100%;
+        }
+        
+        .block-title {
+            font-size: 2.5rem;
+            color: #ffffff66 !important;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .block-tagline {
+            font-size: 1.3rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .block-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+        
+        /* Light mode support */
+        [data-theme="light"] .block-title {
+            color: #333333 !important;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .block-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar glass-panel">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="Assets/logo2.PNG" alt="CredO Logo" class="nav-logo">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Solutions</a>
+                    <ul class="dropdown-menu glass-panel">
+                        <li><a href="under-the-hood.html" class="dropdown-link">Under the hood...!</a></li>
+                        <li><a href="enterprise-product.html" class="dropdown-link">Enterprise Product</a></li>
+                        <li><a href="connected-everything.html" class="dropdown-link active">Connected Everything</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="partners.html" class="nav-link">Partners</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Know us</a>
+                    <ul class="dropdown-menu glass-panel">
+                        <li><a href="whos-behind-this.html" class="dropdown-link">Who's behind this</a></li>
+                        <li><a href="who-we-are.html" class="dropdown-link">Who We Are</a></li>
+                        <li><a href="events.html" class="dropdown-link">Events</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="reach-out.html" class="nav-link">Reach out</a></li>
+            </ul>
+            <div class="nav-actions">
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun" id="themeIcon"></i>
+                </button>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="page-title">
+                    Connected <span class="gradient-text">Everything</span>
+                </h1>
+                <p class="page-subtitle">
+                    Securing the Internet of Things ecosystem with comprehensive IoT cybersecurity solutions for smart devices, industrial systems, and connected infrastructure.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connected Everything - Industry Blocks -->
+    <section class="connected-everything-blocks">
+        <div class="container">
+            <!-- Block 1 - Cities & Mobility -->
+            <div class="industry-block glass-panel">
+                <div class="block-text">
+                    <h3 class="block-title">Cities & Mobility</h3>
+                    <p class="block-tagline">From traffic lights to autonomous fleets — secured at the speed of life.</p>
+                    <p class="block-description">
+                        Our platform synchronizes real-time control testing, threat modelling, and incident response directly into your embedded systems, smart city grids, and automotive fleets. Every endpoint — from a delivery EV to a metro control unit — operates under live assurance feeds, so compliance, uptime, and safety are not just promises, they're measurable, timestamped realities.
+                    </p>
+                    </div>
+                </div>
+                
+            <!-- Block 2 - Critical Infrastructure -->
+            <div class="industry-block glass-panel">
+                <div class="block-text">
+                    <h3 class="block-title">Critical Infrastructure</h3>
+                    <p class="block-tagline">Power, pipelines, and production — uninterrupted and uncompromised.</p>
+                    <p class="block-description">
+                        In oil & gas and other heavy industries, even seconds of downtime can mean millions lost. Our homogenic assurance and continuous controls testing run in parallel with operations, ensuring OT and IT systems are protected against ransomware, insider threats, and supply-chain exploits. Linked intelligence connects threats to asset context instantly, so operators can see and stop an incident before it hits the SCADA core.
+                    </p>
+                    </div>
+                </div>
+                
+            <!-- Block 3 - Healthcare & Data Trust -->
+            <div class="industry-block glass-panel">
+                <div class="block-text">
+                    <h3 class="block-title">Healthcare & Data Trust</h3>
+                    <p class="block-tagline">Every patient record. Every device. Every heartbeat — protected in real time.</p>
+                    <p class="block-description">
+                        We integrate privacy design and security in SDLC into hospital systems, connected medical devices, and telemedicine platforms. Timestamped risk evaluations ensure HIPAA-grade compliance is live, not lagged, while linked incident and threat management ensure life-critical systems stay clean and connected.
+                    </p>
+                        </div>
+                    </div>
+                    
+            <!-- Block 4 - Commerce & Experience -->
+            <div class="industry-block glass-panel">
+                <div class="block-text">
+                    <h3 class="block-title">Commerce & Experience</h3>
+                    <p class="block-tagline">From warehouse floor to checkout counter — a safe transaction every time.</p>
+                    <p class="block-description">
+                        In retail, the trust line is thin — and every breach is public. Our real-time event detection and vulnerability assessments scan payment flows, inventory systems, and connected customer touchpoints continuously. Every detection is context-linked to the exact POS, IoT sensor, or cloud service in play, keeping fraud low and confidence high.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer glass-panel">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="Assets/logo2.PNG" alt="CredO Logo" class="footer-logo">
+                    <p>Possibilities in AI : Real-Time Security Intelligence</p>
+                </div>
+                <div class="footer-section footer-company">
+                    <h4>Company</h4>
+                    <div class="company-links">
+                        <a href="#">About Us</a>
+                        <span class="separator">•</span>
+                        <a href="#">Careers</a>
+                        <span class="separator">•</span>
+                        <a href="#">Contact</a>
+                    </div>
+                    </div>
+                <div class="footer-section footer-social">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                        <a href="https://www.linkedin.com/company/credort/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/cred_o.official/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CredO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

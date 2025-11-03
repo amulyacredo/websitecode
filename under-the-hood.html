@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under the Hood - CredO Cybersecurity</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Assets/favicon.PNG">
+    <link rel="shortcut icon" type="image/png" href="Assets/favicon.PNG">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Match CredO website simple layout while keeping structure */
+        .tech-architecture,
+        .core-components,
+        .algorithm-details {
+            padding: 3rem 0;
+            background: transparent;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 0;
+        }
+        
+        /* Simplify the card layouts to match CredO */
+        .architecture-grid {
+            display: block;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Side by side layout for first two cards */
+        .components-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 2rem !important;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .components-grid .component-card {
+            display: flex !important;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .components-grid .component-card .component-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            object-position: center;
+            margin: 1rem 0;
+        }
+        
+        /* Ensure cards are side by side */
+        .core-components .components-grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 2rem !important;
+        }
+        
+        .tech-layer {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 3rem;
+        }
+        
+        .tech-layer .layer-icon {
+            display: none; /* Hide icons for cleaner look */
+        }
+        
+        .tech-layer .layer-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .tech-layer .layer-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Horizontal layout for first card (Patents and Standards) */
+        .tech-layer:first-child {
+            flex-direction: row;
+        }
+        
+        .tech-layer:first-child .tech-image {
+            width: 400px;
+            height: auto;
+            max-width: none;
+            flex-shrink: 0;
+            margin: 0;
+            object-fit: contain;
+        }
+        
+        .tech-layer:first-child .content-area {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        /* Make second card horizontal too */
+        .tech-layer:last-child {
+            flex-direction: row;
+        }
+        
+        .tech-layer:last-child .tech-image {
+            width: 400px;
+            height: auto;
+            max-width: none;
+            flex-shrink: 0;
+            margin: 0;
+            object-fit: contain;
+        }
+        
+        .tech-layer:last-child .content-area {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            .tech-layer:first-child,
+            .tech-layer:last-child {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .tech-layer:first-child .tech-image,
+            .tech-layer:last-child .tech-image {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .components-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+            
+            .components-grid .component-card .component-image {
+                height: 250px;
+            }
+        }
+        
+        /* Simple image styling matching CredO */
+        .tech-image,
+        .component-image,
+        .algorithm-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 2rem auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .algorithm-sub-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 1rem auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Simplify component cards */
+        .components-grid {
+            display: block;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .component-card {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+        }
+        
+        .component-card .component-header {
+            margin-bottom: 2rem;
+        }
+        
+        .component-card .component-header i {
+            display: none; /* Hide icons */
+        }
+        
+        .component-card .component-header h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin: 0;
+            text-align: left;
+        }
+        
+        .component-card .component-body p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+        
+        /* Simplify algorithm section */
+        .algorithm-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .algorithm-text .section-title {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        
+        .algorithm-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+            margin-bottom: 2rem;
+        }
+        
+        .algorithm-list {
+            margin-top: 2rem;
+        }
+        
+        .algorithm-item {
+            margin-bottom: 3rem;
+            padding: 0;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+        
+        .algorithm-item .algorithm-icon {
+            display: none; /* Hide icons */
+        }
+        
+        .algorithm-item .algorithm-info h4 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .algorithm-item .algorithm-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar glass-panel">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="Assets/logo2.PNG" alt="CredO Logo" class="nav-logo">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Solutions</a>
+                    <ul class="dropdown-menu glass-panel">
+                        <li><a href="under-the-hood.html" class="dropdown-link active">Under the hood...!</a></li>
+                        <li><a href="enterprise-product.html" class="dropdown-link">Enterprise Product</a></li>
+                        <li><a href="connected-everything.html" class="dropdown-link">Connected Everything</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="partners.html" class="nav-link">Partners</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Know us</a>
+                    <ul class="dropdown-menu glass-panel">
+                        <li><a href="whos-behind-this.html" class="dropdown-link">Who's behind this</a></li>
+                        <li><a href="who-we-are.html" class="dropdown-link">Who We Are</a></li>
+                        <li><a href="events.html" class="dropdown-link">Events</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="reach-out.html" class="nav-link">Reach out</a></li>
+            </ul>
+            <div class="nav-actions">
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun" id="themeIcon"></i>
+                </button>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="page-title">
+                    Under the <span class="gradient-text">hood..!</span>
+                </h1>
+                <p class="page-subtitle">
+                    Going forward, we can expect cybersecurity technology to advance further with the growing integration of Internet of Things (IoT) devices, increased reliance on cloud services, and the advent of 5G technology. AI and ML will likely become even more sophisticated, with advances in natural language processing and anomaly detection. The rise of decentralized autonomous security operations centers (SOCs) and predict threat intelligence platforms will also be key to keeping ahead of cyber adversaries .
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Architecture Section -->
+    <section class="tech-architecture">
+        <div class="container">
+            <div class="architecture-grid">
+                <div class="tech-layer glass-panel">
+                    <div class="layer-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <img src="Assets/patents-diagram.png" alt="CredO Patents and Standards" class="tech-image">
+                    <div class="content-area">
+                        <h2 class="section-title">Patents and Standards</h2>
+                        <p class="layer-description">CredO holds a strong portfolio of inventions covering key aspects of its technology, providing a competitive edge in the market. We have filed for three international patents of 50 claims each. They define in its entirety custom defined protocols in security evaluation, custom defined protocols in building security context and custom defined protocols in info chains of integrity of security implementations.</p>
+                        <p class="layer-description">We also define inventions in secure and responsible AI, in the way we build AI, that does not obtain, hold or retain customer data while being able define context with only the value of data.</p>
+                    </div>
+                </div>
+                
+                <div class="tech-layer glass-panel">
+                    <div class="layer-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <img src="Assets/standards-graphic.png" alt="CredO Standards and Protocols" class="tech-image">
+                    <div class="content-area">
+                        <h3 class="layer-title">Standards</h3>
+                        <p class="layer-description">CredO's unique technology enables any logical cybersecurity organization to scale from one plane of view, where one plane of view involves 100C50 computations of correlated evaluations of context that is built across logical silos, to multiple planes of view with each plane of view being a cybersecurity programme. It establish a new standard of dynamic real time risk replacing the FAIR and BAYESIAN models in neural blocks of intelligence. It establishes a new standard for securing AI and responsible AI in its algorithms for building context. The inventions and standards are being established across North America and 149 countries in the EU region.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Components -->
+    <section class="core-components">
+        <div class="container">
+            
+            <!-- First row: Side by side cards -->
+            <div class="components-grid">
+                <div class="component-card glass-panel">
+                    <div class="component-header">
+                        <i class="fas fa-project-diagram"></i>
+                        <h3>Multi Verses❓</h3>
+                    </div>
+                    <img src="Assets/multiverse-diagram.png" alt="CredO Multi Verses Context Computation" class="component-image">
+                    <div class="component-body">
+                        <p>We compute multiverses of context. CredO algorithms compute context from multiple planes of view, with each plane of view factoring context in another plane of view. The same elements of building context, a ymod10 of associated algorithms, build one verse of security information blocks that are available in vector points in space. Another verse of context built from an alternate plane of view is present as a parallel universe, as the factorization have taken you to another point in vector space!!!!</p>
+                    </div>
+                </div>
+                
+                <div class="component-card glass-panel">
+                    <div class="component-header">
+                        <i class="fas fa-eye"></i>
+                        <h3>7 who look alike ...!</h3>
+                    </div>
+                    <img src="Assets/predictive-algorithm.png" alt="CredO Predictive Context Building" class="component-image">
+                    <div class="component-body">
+                        <h4>CredO Predictive Context Building</h4>
+                        <p>The myth goes that there are seven who like exactly alike in the world. Would you ever come across all of them.. The way we build context enables us to predict the factor of change for a verse of homogenic context to exist. By converting the factor of change into an algorithm our ability to predict an outcome that might be an outlier otherwise is measurable.</p>
+                        </div>
+                    </div>
+                </div>
+                
+            <!-- Second row: Remaining cards -->
+            <div class="components-grid">
+                <div class="component-card glass-panel">
+                    <div class="component-header">
+                        <i class="fas fa-clock"></i>
+                        <h3>Time Travel.. Wormholes</h3>
+                    </div>
+                    <img src="Assets/wormhole-visualization.png" alt="CredO Time Travel and Wormholes" class="component-image">
+                    <div class="component-body">
+                        <p>CredO's technology enables time travel through wormholes in cybersecurity context. Our algorithms create temporal bridges that allow us to analyze past security events and predict future threats by establishing connections across different time dimensions in the security landscape.</p>
+                    </div>
+                </div>
+                
+                <div class="component-card glass-panel">
+                    <div class="component-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Anomalies and Outliers</h3>
+                    </div>
+                    <img src="Assets/anomaly-detection.png" alt="CredO Anomaly Detection" class="component-image">
+                    <div class="component-body">
+                        <p>Our advanced anomaly detection algorithms identify outliers and unusual patterns in security data. By leveraging machine learning and statistical analysis, we can detect potential threats that might otherwise go unnoticed, providing comprehensive protection against emerging security risks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer glass-panel">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="Assets/logo2.PNG" alt="CredO Logo" class="footer-logo">
+                    <p>Possibilities in AI : Real-Time Security Intelligence</p>
+                </div>
+                <div class="footer-section footer-company">
+                    <h4>Company</h4>
+                    <div class="company-links">
+                        <a href="#">About Us</a>
+                        <span class="separator">•</span>
+                        <a href="#">Careers</a>
+                        <span class="separator">•</span>
+                        <a href="#">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-section footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/credort/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/cred_o.official/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CredO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
